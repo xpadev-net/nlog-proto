@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 
-service ShopService {
+service LoggingService {
     rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse) {}
     rpc AppendLog(AppendLogRequest) returns (AppendLogResponse) {}
     rpc EndTask(EndTaskRequest) returns (EndTaskResponse) {}
