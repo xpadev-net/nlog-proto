@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+service ShopService {
+    rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse) {}
+    rpc AppendLog(AppendLogRequest) returns (AppendLogResponse) {}
+    rpc EndTask(EndTaskRequest) returns (EndTaskResponse) {}
+}
+
+message Log {
+    enum LogType {
+        stdout = 0;
+        stderr = 1;
+    }
+    int64                     taskId  = 1;
+    LogType                   type    = 2;
+    string                    message = 3;
+    google.protobuf.Timestamp at      = 4;
+}
+
+message CreateTaskRequest {
+    int64  itemId    = 1;
+    string issuer    = 2;
+    int64  processId = 3;
+    string workDir   = 4;
+    string command   = 5;
+}
+
+message CreateTaskResponse {
+    int64 taskId = 1;
+}
+
+message AppendLogRequest {
+    Log log = 1;
+}
+
+message AppendLogResponse {}
+
+message EndTaskRequest {
+    int64 taskId   = 1;
+    int32 exitCode = 2;
+}
+
+message EndTaskResponse {}
