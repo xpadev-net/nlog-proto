@@ -35,7 +35,9 @@ message AppendLogRequest {
     Log log = 1;
 }
 
-message AppendLogResponse {}
+message AppendLogResponse {
+    int64 logId = 1;
+}
 
 message EndTaskRequest {
     int64 taskId   = 1;
