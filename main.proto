@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/xpadev-net/nlog-cli/grpc/main";
+option go_package = "pkg/grpc";
 import "google/protobuf/timestamp.proto";
 
 service LoggingService {
